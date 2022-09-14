@@ -6,8 +6,8 @@ import './TripList.css'
 export default function TripList(){
 
    
-    const [url, setUrl] = useState('http://localhost:3000/trips')
-    const {data: trips, isPending } = useFetch(url)
+    const [url, setUrl] = useState('http://localhost:3000/tripsbb')
+    const {data: trips, isPending, error } = useFetch(url)
     
    
    // console.log(trips)
@@ -17,6 +17,7 @@ export default function TripList(){
         <div className="trip-list">
             <h2>Trip List</h2>
             {isPending && <div>Loading trips..</div>}
+            {error && <div>{error}</div>}
             <ul>
                 {trips && trips.map(trip =>(
                         <li key={trip.id}>
